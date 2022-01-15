@@ -2,15 +2,6 @@ import PyPDF2
 import pandas as pd
 
 
-def read_to_string(pdfReader_obj):
-    all_in_one = ''
-    for page_no in range(pdfReader_obj.getNumPages()):
-        pageObj_single = pdfReader_obj.getPage(page_no)
-        pageone_text_single = pageObj_single.extractText()
-        all_in_one = all_in_one + pageone_text_single
-    return all_in_one
-
-
 def get_name(single_student_text, name_start_index):
     name_str = single_student_text[name_start_index:40]
     full_name = name_str.strip()
@@ -94,8 +85,7 @@ def gen_seatno_list(input_start_seat_no, input_end_seat_no):
     return list_of_seat_no_str
 
 
-def converter(pdfReader_obj, input_start_seat_no, input_end_seat_no, sem_no):
-    to_single_string = read_to_string(pdfReader_obj)
+def converter(to_single_string, input_start_seat_no, input_end_seat_no, sem_no):
     seat_no_list = gen_seatno_list(input_start_seat_no, input_end_seat_no)
     all_students_marks = []
     # looping through the list of seat numbers
@@ -231,9 +221,13 @@ def converter(pdfReader_obj, input_start_seat_no, input_end_seat_no, sem_no):
             for individual_student_item_1 in individual_student_item:
                 individual_student_single_prepared.append(
                     individual_student_item_1)
-        try:
-            marks_df.loc[len(marks_df)] = individual_student_single_prepared
-        except:
-            print(f'incorrect entry - {individual_student_single_prepared[0]}')
-
-    return marks_df
+        # try:
+        marks_df.loc[len(marks_df)] = individual_student_single_prepared
+            # marks_df.to_excel('upload/'+'excel.xlsx')
+            # done = "Converted to dataframe"
+        # except:
+        #     done = "Encountered Some error"
+        #     print(f'incorrect entry - {individual_student_single_prepared[0]}')
+    marks_df.to_excel('uploads/excel.xlsx')
+    done = "Converted to dataframe"
+    return done

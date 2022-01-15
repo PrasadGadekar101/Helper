@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helper</title>
+</head>
+<body>
+    <h2>Upload the PDF file.. </h2>
+    <h3> *This Application works on MCA, MSC Pune University. </h3>
+    {% if info.no_file == True %}
+    <h4> Please select the file and the click on submit* </h4>
+    {% endif %}
+    <h1>File Upload</h1>
+    <form method="POST" action="" enctype="multipart/form-data">
+      <label for="start_seat_no"> Enter starting seat no : </label>
+      <input type="number" id="start_seat_no" name="start_seat_no"><br><br>
+      <label for="end_seat_no"> Enter ending seat no : </label>
+      <input type="number" id="end_seat_no" name="end_seat_no"><br><br>
+      <label for="sem_no"> Enter semester no : </label>
+      <input type="number" id="sem_no" name="sem_no"><br><br>
+      <label for="file_upload" > Upload the PDF file : </label> 
+      <input type="file" name="file" accept=".pdf"></p>
+      <input type="submit" value="Submit"></p>
+    </form>
+</body>
+</html>
