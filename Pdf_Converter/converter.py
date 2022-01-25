@@ -85,7 +85,7 @@ def gen_seatno_list(input_start_seat_no, input_end_seat_no):
     return list_of_seat_no_str
 
 
-def converter(to_single_string, input_start_seat_no, input_end_seat_no, sem_no):
+def converter(to_single_string, input_start_seat_no, input_end_seat_no, sem_no,file_name):
     seat_no_list = gen_seatno_list(input_start_seat_no, input_end_seat_no)
     all_students_marks = []
     # looping through the list of seat numbers
@@ -228,6 +228,6 @@ def converter(to_single_string, input_start_seat_no, input_end_seat_no, sem_no):
         # except:
         #     done = "Encountered Some error"
         #     print(f'incorrect entry - {individual_student_single_prepared[0]}')
-    marks_df.to_excel('uploads/excel.xlsx')
+    marks_df.to_excel(f'uploads/{file_name}.xlsx')
     done = "Converted to dataframe"
     return done

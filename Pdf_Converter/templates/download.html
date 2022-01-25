@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+          }
+        body {
+            background-image: url("../static/bgw.jpg") ;
+            height: 100%; 
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+           }
+        h2{
+            background-color: rgba(0,0,0,.5);
+            color: #fff;
+            padding: 20px;
+            margin: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+        }
+        #main-navigation {
+            background-color: #390281;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+            padding: 5px;
+            margin: 0;
+            color: aliceblue;
+            text-indent: 2rem;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+          }
+        #main-navigation > a{
+            color: #ffffff;
+            text-decoration: None;
+        }
+        #align{
+            align-items: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #button{
+            font: inherit;
+            background-color: #390281;
+            color: white;
+            border: 1px solid #390281;
+            padding: 0.5rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        #button:hover,
+        #button:active{
+        background-color: #6d4c9c;
+        border-color: #4f0ba7;
+        }
+
+    </style>
+</head>
+<body>
+    <header id="main-navigation">
+        <a href="/"><h1> Helper </h1></a>
+    </header>
+
+    <h2> Download file from here ! </h2><br><br>
+    <div id="align">
+    <div><a href="/return-files/{{value}}"> <button id='button'>Download</button> </a></div>
+    </div>
+</body>
+</html>

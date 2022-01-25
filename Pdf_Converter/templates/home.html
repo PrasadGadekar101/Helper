@@ -5,24 +5,122 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Helper</title>
+    <style>
+        body {
+            background-image: url("static/bgw.jpg");
+           }
+        #main-navigation {
+            background-color: #390281;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+            padding: 5px;
+            margin: 0;
+            color: aliceblue;
+            text-indent: 2rem;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+          }
+        #input-form{
+            margin: 1rem auto 3rem auto;
+            padding: 2rem;
+            width: 80%;
+            max-width: 90%;
+            border-radius: 12px;
+            background-color: rgba(0,0,0,.5);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+            position: relative;
+            color: #fff;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        #input-form #button{
+            font: inherit;
+            background-color: #390281;
+            color: white;
+            border: 1px solid #390281;
+            padding: 0.5rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        #input-form #button:hover,
+        #input-form #button:active{
+        background-color: #6d4c9c;
+        border-color: #4f0ba7;
+        }
+
+        .form-control label{
+            display: inline-flex;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            
+        }
+        .form-control input{
+          display: inline-flex;
+          width: auto;
+          font: inherit;
+          padding: 0.25rem;
+          border-radius: 6px;   
+        }
+        .info-section{
+            color: black;
+            padding: 10px;
+            margin-top: 1rem;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+        }
+        #file{
+            display: inline-block;
+        }
+        #content{
+            background-color: rgba(0,0,0,.5);
+            color: #fff;
+            padding: 20px;
+            margin: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+            border-radius: 8px;
+        }
+
+    </style>
 </head>
 <body>
-    <h2>Upload the PDF file.. </h2>
-    <h3> *This Application works on MCA, MSC Pune University. </h3>
-    {% if info.no_file == True %}
-    <h4> Please select the file and the click on submit* </h4>
-    {% endif %}
-    <h1>File Upload</h1>
-    <form method="POST" action="" enctype="multipart/form-data">
-      <label for="start_seat_no"> Enter starting seat no : </label>
-      <input type="number" id="start_seat_no" name="start_seat_no"><br><br>
-      <label for="end_seat_no"> Enter ending seat no : </label>
-      <input type="number" id="end_seat_no" name="end_seat_no"><br><br>
-      <label for="sem_no"> Enter semester no : </label>
-      <input type="number" id="sem_no" name="sem_no"><br><br>
-      <label for="file_upload" > Upload the PDF file : </label> 
-      <input type="file" name="file" accept=".pdf"></p>
-      <input type="submit" value="Submit"></p>
+    <header id="main-navigation">
+        <h1> Helper </h1>
+    </header>
+
+    <section class="info-section" >
+        <div id="content">
+        <h2>Upload the PDF file.. </h2>
+        <h3> *This Application works on MCA, MSC Pune University. </h3>
+        </div>
+        {% for key,value in response_dict.items() %}
+          {% if value == False %} 
+          <h4> Please provide {{key}} </h4>
+          {% elif key == 'Successfully_Done' %}
+          {% if response_dict.key == True %}
+          <h4> The PDF provided is Converted Successfully </h4>
+          {% endif %}
+          {% endif %}
+          {% if key == "file_name" %}
+          <div> <a href="{{ url_for('get_file', file_name= response_dict.key) }}"> Click here to download Converted file  </a></div>
+          <p>{{response_dict.key}}</p>
+          {% endif %}
+          <p>{{response_dict.key}}</p>
+        {% endfor %}
+    </section>
+
+    <form id="input-form" method="POST" action="/" enctype="multipart/form-data">
+        <div class="form-control">
+        <label for='start_seat_no' > Enter Starting seat no :  </label>
+        <input type="number" id="start_seat_no" name="start_seat_no"><br>
+        <label for='end_seat_no' > Enter Last seat no :  </label>
+        <input type="number" id="end_seat_no" name="end_seat_no"><br>
+        <label for='sem_no' > Enter semester no :  </label>
+        <input type="number" id="sem_no" name="sem_no"><br>
+        <label for='file' > Choose file : </label>
+        <input id="file" name="file" type="file" accept=".pdf" ><br><br>
+        <input id= "button"  type="submit" value="Submit">
+        </div>
     </form>
+    <div> <a  href="C:\Users\Prasad\Documents\projects\Flask\Pdf_Converter\uploads\excel.xlsx"> file here </a> </div>
+    <p> 11742 , 11836</p>
 </body>
+
 </html>
