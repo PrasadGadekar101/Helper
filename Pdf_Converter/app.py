@@ -66,7 +66,7 @@ def upload_file():
         uploaded_file_data.close()
         response_dict['Successfully_Done'] = True
         response_dict['file_name'] = file_name
-        file_name = file_name +'.xlsx'
+        file_name = file_name + '.xlsx'
         return redirect('/downloadfile/' + file_name)
         # return render_template("home copy.html", response_dict=response_dict)
     else:
@@ -85,4 +85,4 @@ def return_files_tut(filename):
 
 
 if __name__ == "__main__":
-    app.run(port=8000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
